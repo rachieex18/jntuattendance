@@ -6,6 +6,12 @@ const cors = require('cors');
 
 const app = express();
 
+// CORS configuration
+app.use(cors({
+    origin: ['https://jntuxattendance.vercel.app', 'http://localhost:3000'],
+    credentials: true
+}));
+
 // Root route for health check
 app.get('/', (req, res) => {
     res.json({ status: 'ok', message: 'JNTU Attendance API is running' });
@@ -18,7 +24,6 @@ app.use((req, res, next) => {
 });
 
 app.use(express.json());
-app.use(cors());
 
 // ============================================
 // 📧 EMAIL CONFIGURATION
