@@ -1,43 +1,63 @@
 # 🚀 Hosting your JNTUH Attendance Tracker
 
-This project is now ready to be hosted as a professional MVP. Follow these steps to get it online.
+This project is now ready to be hosted as a professional MVP on Vercel (both frontend and backend).
 
-## 1. Deployed Backend (The Server)
-The backend handles emails and Supabase user creation.
-- **Recommended Host**: [Render](https://render.com) or [Railway](https://railway.app).
-- **Steps**:
-  1. Connect your GitHub repository.
-  2. Set the "Root Directory" to `server`.
-  3. Standard build: `npm install`.
-  4. Start command: `npm start`.
-  5. **Environment Variables**: Copy all variables from your `server/.env` to the Render dashboard.
-  6. Copy your deployed Backend URL (e.g., `https://my-api.onrender.com`).
+## Quick Deploy to Vercel
 
-## 2. Deployed Frontend (The Website)
-The frontend is the user interface.
-- **Recommended Host**: [Vercel](https://vercel.com) (Best for Expo/React web).
-- **Steps**:
-  1. Connect your GitHub repository.
-  2. Go to **Project Settings → Build & Output Settings**:
-     - **Framework Preset**: `Other`
-     - **Build Command**: `npm run build`
-     - **Output Directory**: `dist` ⚠️ **CRITICAL** - Must be `dist`, not `public`
-     - **Install Command**: `npm install`
-  3. **Environment Variables**: Add `EXPO_PUBLIC_BACKEND_URL` and set it to your **Backend URL** from Step 1.
-  4. Deploy!
+Both the frontend (Expo web app) and backend (API) are configured to deploy together on Vercel.
 
-### ⚠️ Important Vercel Configuration Notes:
-- The `vercel.json` file is already configured correctly
-- Vercel will serve the static files from the `dist/` folder
-- Do NOT commit `node_modules/` or `dist/` folders (already in .gitignore)
-- The build process runs `expo export` which generates the static site in `dist/`
+### Prerequisites
+- GitHub account with this repository
+- Vercel account (free tier works)
+- Gmail account for sending verification emails
+- Supabase project set up
 
-## 3. Post-Deployment Checks
-- **CORS**: The backend is already configured to allow all origins, so it should work immediately.
-- **Supabase**: Ensure your Supabase project's "Allowed Redirect URLs" includes your new Vercel URL.
+### Deployment Steps
+
+1. **Connect to Vercel**
+   - Go to [Vercel Dashboard](https://vercel.com/dashboard)
+   - Click "Add New Project"
+   - Import your GitHub repository
+   - Click "Import"
+
+2. **Configure Build Settings**
+   - Framework Preset: `Other`
+   - Build Command: `npm run build`
+   - Output Directory: `dist` ⚠️ **CRITICAL**
+   - Install Command: `npm install`
+
+3. **Add Environment Variables**
+   ```
+   SENDER_EMAIL=your-gmail@gmail.com
+   SENDER_PASSWORD=your-gmail-app-password
+   SUPABASE_URL=https://npxxtdymrjykixszxchd.supabase.co
+   SUPABASE_SERVICE_ROLE_KEY=your-supabase-service-role-key
+   EXPO_PUBLIC_BACKEND_URL=https://your-project.vercel.app/api
+   ```
+
+4. **Deploy**
+   - Click "Deploy" and wait for build to complete
+   - After first deploy, update `EXPO_PUBLIC_BACKEND_URL` with your actual Vercel URL
+   - Redeploy
+
+### What Gets Deployed
+
+- **Frontend**: Static Expo web app at `https://your-project.vercel.app`
+- **Backend API**: Serverless functions at `https://your-project.vercel.app/api`
+
+### Post-Deployment
+
+- **Supabase**: Add your Vercel URL to Supabase "Allowed Redirect URLs"
+- **Gmail**: Set up App Password at https://myaccount.google.com/apppasswords
+
+## 📚 Detailed Documentation
+
+See `VERCEL_FULL_DEPLOYMENT.md` for complete step-by-step instructions.
 
 ### Current Project State
 - ✅ Responsive Landing Page on Web
 - ✅ SPA Routing for Vercel
 - ✅ Production Build Scripts
 - ✅ Environment Variable Support
+- ✅ Backend API as Serverless Functions
+- ✅ Unified Vercel Deployment

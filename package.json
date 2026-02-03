@@ -8,6 +8,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "build": "expo export",
+    "vercel-build": "expo export",
     "local": "expo start --web"
   },
   "dependencies": {

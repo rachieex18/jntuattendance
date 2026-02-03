@@ -1,0 +1,11 @@
+{
+    "name": "jntuxatt-api",
+    "version": "1.0.0",
+    "dependencies": {
+        "express": "^4.18.2",
+        "nodemailer": "^6.9.7",
+        "bcrypt": "^5.1.1",
+        "@supabase/supabase-js": "^2.39.0",
+        "cors": "^2.8.5"
+    }
+}
