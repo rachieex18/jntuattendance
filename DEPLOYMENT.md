@@ -20,7 +20,7 @@ The frontend is the user interface.
   1. Connect your GitHub repository.
   2. Set the "Framework Preset" to **Other**.
   3. **Build Command**: `npm run build` (This runs `expo export`).
-  4. **Output Directory**: `dist` (⚠️ **CRITICAL**: Change this from `public` to `dist`).
+  4. **Output Directory**: `dist` (⚠️ **CRITICAL**: Default is `public`, you **MUST** change this to `dist`).
   5. **Environment Variables**: Add `EXPO_PUBLIC_BACKEND_URL` and set it to your **Backend URL** from Step 1.
   6. Deploy!
 
