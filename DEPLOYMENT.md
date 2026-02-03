@@ -18,11 +18,19 @@ The frontend is the user interface.
 - **Recommended Host**: [Vercel](https://vercel.com) (Best for Expo/React web).
 - **Steps**:
   1. Connect your GitHub repository.
-  2. Set the "Framework Preset" to **Other**.
-  3. **Build Command**: `npm run build` (This runs `expo export`).
-  4. **Output Directory**: `dist` (⚠️ **CRITICAL**: Default is `public`, you **MUST** change this to `dist`).
-  5. **Environment Variables**: Add `EXPO_PUBLIC_BACKEND_URL` and set it to your **Backend URL** from Step 1.
-  6. Deploy!
+  2. Go to **Project Settings → Build & Output Settings**:
+     - **Framework Preset**: `Other`
+     - **Build Command**: `npm run build`
+     - **Output Directory**: `dist` ⚠️ **CRITICAL** - Must be `dist`, not `public`
+     - **Install Command**: `npm install`
+  3. **Environment Variables**: Add `EXPO_PUBLIC_BACKEND_URL` and set it to your **Backend URL** from Step 1.
+  4. Deploy!
+
+### ⚠️ Important Vercel Configuration Notes:
+- The `vercel.json` file is already configured correctly
+- Vercel will serve the static files from the `dist/` folder
+- Do NOT commit `node_modules/` or `dist/` folders (already in .gitignore)
+- The build process runs `expo export` which generates the static site in `dist/`
 
 ## 3. Post-Deployment Checks
 - **CORS**: The backend is already configured to allow all origins, so it should work immediately.
