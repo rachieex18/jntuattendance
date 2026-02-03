@@ -19,7 +19,7 @@ export const supabase = createClient(
 // Replace with your local IP or backend URL
 // Use 'http://10.0.2.2:3000' for Android Emulator
 // Use 'http://127.0.0.1:3000' or localhost for Web
-export const BACKEND_URL = 'http://127.0.0.1:3000';
+export const BACKEND_URL = process.env.EXPO_PUBLIC_BACKEND_URL || 'http://127.0.0.1:3000';
 
 // Helper for session persistence and auth
 export const authService = {

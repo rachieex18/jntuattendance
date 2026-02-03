@@ -8,6 +8,11 @@ require('dotenv').config();
 
 const app = express();
 
+// Root route for health check
+app.get('/', (req, res) => {
+    res.json({ status: 'ok', message: 'JNTU Attendance API is running' });
+});
+
 // Request Logger (First!)
 app.use((req, res, next) => {
     console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
@@ -412,7 +417,7 @@ app.post('/reset-password', async (req, res) => {
     }
 });
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`✅ Server running on http://localhost:${PORT}`);
+    console.log(`✅ Server running on port ${PORT}`);
 });

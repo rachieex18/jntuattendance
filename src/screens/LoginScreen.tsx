@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert, ActivityIndicator, Platform } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert, ActivityIndicator, Platform, ScrollView } from 'react-native';
 import { authService } from '../services/supabase';
 import { THEME } from '../theme';
 
@@ -93,71 +93,162 @@ export const LoginScreen = ({ onRegisterPress }: { onRegisterPress: () => void }
     }
 
     return (
-        <View style={styles.container}>
-            <View style={styles.header}>
-                <Text style={styles.title}>JNTUH</Text>
-                <Text style={styles.subtitle}>Attendance Tracker</Text>
-            </View>
+        <ScrollView contentContainerStyle={styles.scrollContainer}>
+            <View style={styles.container}>
+                <View style={styles.mainContent}>
+                    {/* Left Side: Branding & Features (Web Only) */}
+                    {Platform.OS === 'web' && (
+                        <View style={styles.heroSection}>
+                            <Text style={styles.heroTitle}>Smart Attendance for JNTUH</Text>
+                            <Text style={styles.heroSubtitle}>
+                                Track your sessions, calculate bunk capacity, and manage your timetable with AI-powered scanning.
+                            </Text>
 
-            <View style={styles.form}>
-                <Text style={styles.label}>Email Address</Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder="Enter your email"
-                    placeholderTextColor={THEME.colors.textLight}
-                    value={email}
-                    onChangeText={setEmail}
-                    autoCapitalize="none"
-                    keyboardType="email-address"
-                />
-
-                <Text style={styles.label}>Password</Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder="********"
-                    placeholderTextColor={THEME.colors.textLight}
-                    value={password}
-                    onChangeText={setPassword}
-                    secureTextEntry
-                />
-
-                {errorMsg && (
-                    <Text style={styles.errorText}>{errorMsg}</Text>
-                )}
-
-                <TouchableOpacity
-                    style={[styles.button, loading && styles.buttonDisabled]}
-                    onPress={handleLogin}
-                    disabled={loading}
-                >
-                    {loading ? (
-                        <ActivityIndicator color="#fff" />
-                    ) : (
-                        <Text style={styles.buttonText}>Sign In</Text>
+                            <View style={styles.featureList}>
+                                {[
+                                    { icon: '📊', title: 'Live Tracker', desc: 'Real-time aggregate calculations' },
+                                    { icon: '📸', title: 'AI Timetable Scan', desc: 'Upload photo, get schedule' },
+                                    { icon: '🏃', title: 'Bunk Logic', desc: 'Know exactly when you can skip' }
+                                ].map((feature, i) => (
+                                    <View key={i} style={styles.featureItem}>
+                                        <Text style={styles.featureIcon}>{feature.icon}</Text>
+                                        <View>
+                                            <Text style={styles.featureTitle}>{feature.title}</Text>
+                                            <Text style={styles.featureDesc}>{feature.desc}</Text>
+                                        </View>
+                                    </View>
+                                ))}
+                            </View>
+                        </View>
                     )}
-                </TouchableOpacity>
 
-                <TouchableOpacity onPress={() => setStep('forgot-email')} style={styles.linkButton}>
-                    <Text style={styles.linkText}>Forgot Password?</Text>
-                </TouchableOpacity>
+                    {/* Right Side: Login Form */}
+                    <View style={styles.formSection}>
+                        <View style={styles.header}>
+                            <Text style={styles.title}>JNTUH</Text>
+                            <Text style={styles.subtitle}>Log in to your dashboard</Text>
+                        </View>
 
-                <TouchableOpacity onPress={onRegisterPress} style={styles.linkButton}>
-                    <Text style={styles.linkText}>Don't have an account? <Text style={styles.linkTextBold}>Sign Up</Text></Text>
-                </TouchableOpacity>
+                        <View style={styles.form}>
+                            <Text style={styles.label}>Email Address</Text>
+                            <TextInput
+                                style={styles.input}
+                                placeholder="Enter your email"
+                                placeholderTextColor={THEME.colors.textLight}
+                                value={email}
+                                onChangeText={setEmail}
+                                autoCapitalize="none"
+                                keyboardType="email-address"
+                            />
+
+                            <Text style={styles.label}>Password</Text>
+                            <TextInput
+                                style={styles.input}
+                                placeholder="********"
+                                placeholderTextColor={THEME.colors.textLight}
+                                value={password}
+                                onChangeText={setPassword}
+                                secureTextEntry
+                            />
+
+                            {errorMsg && (
+                                <Text style={styles.errorText}>{errorMsg}</Text>
+                            )}
+
+                            <TouchableOpacity
+                                style={[styles.button, loading && styles.buttonDisabled]}
+                                onPress={handleLogin}
+                                disabled={loading}
+                            >
+                                {loading ? (
+                                    <ActivityIndicator color="#fff" />
+                                ) : (
+                                    <Text style={styles.buttonText}>Sign In</Text>
+                                )}
+                            </TouchableOpacity>
+
+                            <TouchableOpacity onPress={() => setStep('forgot-email')} style={styles.linkButton}>
+                                <Text style={styles.linkText}>Forgot Password?</Text>
+                            </TouchableOpacity>
+
+                            <TouchableOpacity onPress={onRegisterPress} style={styles.linkButton}>
+                                <Text style={styles.linkText}>Don't have an account? <Text style={styles.linkTextBold}>Sign Up</Text></Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </View>
             </View>
-        </View>
+        </ScrollView>
     );
 };
 
 const styles = StyleSheet.create({
+    scrollContainer: {
+        flexGrow: 1,
+        backgroundColor: THEME.colors.background,
+    },
     container: {
         flex: 1,
-        backgroundColor: THEME.colors.background,
         justifyContent: 'center',
         padding: THEME.spacing.lg,
     },
-    header: {
+    mainContent: {
+        flexDirection: Platform.OS === 'web' ? 'row' : 'column',
         alignItems: 'center',
+        justifyContent: 'center',
+        maxWidth: 1200,
+        alignSelf: 'center',
+        width: '100%',
+        gap: THEME.spacing.xl,
+    },
+    heroSection: {
+        flex: 1.2,
+        paddingRight: THEME.spacing.xl,
+        display: Platform.OS === 'web' ? 'flex' : 'none',
+    },
+    heroTitle: {
+        fontSize: 48,
+        fontWeight: '900',
+        color: THEME.colors.text,
+        lineHeight: 56,
+        marginBottom: THEME.spacing.lg,
+    },
+    heroSubtitle: {
+        fontSize: 20,
+        color: THEME.colors.textLight,
+        lineHeight: 30,
+        marginBottom: THEME.spacing.xl,
+    },
+    featureList: {
+        gap: THEME.spacing.lg,
+    },
+    featureItem: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: THEME.spacing.md,
+    },
+    featureIcon: {
+        fontSize: 32,
+        backgroundColor: THEME.colors.card,
+        padding: 12,
+        borderRadius: 16,
+    },
+    featureTitle: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: THEME.colors.text,
+    },
+    featureDesc: {
+        fontSize: 14,
+        color: THEME.colors.textLight,
+    },
+    formSection: {
+        flex: 1,
+        width: '100%',
+        maxWidth: 450,
+    },
+    header: {
+        alignItems: Platform.OS === 'web' ? 'flex-start' : 'center',
         marginBottom: THEME.spacing.xl,
     },
     title: {
@@ -171,13 +262,15 @@ const styles = StyleSheet.create({
     },
     form: {
         backgroundColor: THEME.colors.card,
-        padding: THEME.spacing.xl,
+        padding: Platform.OS === 'web' ? THEME.spacing.xl : THEME.spacing.lg,
         borderRadius: THEME.radius.lg,
-        elevation: 4,
+        elevation: 10,
         shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.1,
-        shadowRadius: 8,
+        shadowOffset: { width: 0, height: 10 },
+        shadowOpacity: 0.3,
+        shadowRadius: 20,
+        borderWidth: 1,
+        borderColor: THEME.colors.cardSecondary,
     },
     label: {
         fontSize: 14,
