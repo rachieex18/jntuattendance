@@ -41,7 +41,7 @@ SENDER_EMAIL=your-gmail@gmail.com
 SENDER_PASSWORD=your-gmail-app-password
 SUPABASE_URL=https://npxxtdymrjykixszxchd.supabase.co
 SUPABASE_SERVICE_ROLE_KEY=your-supabase-service-role-key
-EXPO_PUBLIC_BACKEND_URL=https://your-project.vercel.app/api
+EXPO_PUBLIC_BACKEND_URL=https://jntuxattendance.vercel.app/api
 ```
 
 **Important Notes:**
@@ -49,7 +49,7 @@ EXPO_PUBLIC_BACKEND_URL=https://your-project.vercel.app/api
 - `SENDER_PASSWORD`: Gmail App Password (not your regular password)
   - Get it from: https://myaccount.google.com/apppasswords
 - `SUPABASE_SERVICE_ROLE_KEY`: Get from Supabase Dashboard → Settings → API
-- `EXPO_PUBLIC_BACKEND_URL`: Will be `https://your-project-name.vercel.app/api`
+- `EXPO_PUBLIC_BACKEND_URL`: Will be `https://jntuxattendance.vercel.app/api`
   - You can update this after first deployment
 
 **Environment Selection:** Select **All** (Production, Preview, Development)
@@ -64,25 +64,25 @@ After your first deployment:
 
 1. Copy your Vercel project URL (e.g., `https://jntuattendance.vercel.app`)
 2. Go to **Settings → Environment Variables**
-3. Update `EXPO_PUBLIC_BACKEND_URL` to: `https://your-project.vercel.app/api`
+3. Update `EXPO_PUBLIC_BACKEND_URL` to: `https://jntuxattendance.vercel.app/api`
 4. Go to **Deployments** → Click **⋯** → **Redeploy**
 
 ## 🧪 Step 3: Test Your Deployment
 
 ### Test Frontend
-Visit: `https://your-project.vercel.app`
+Visit: `https://jntuxattendance.vercel.app`
 - Should show your app's landing page
 - No file downloads!
 
 ### Test Backend API
-Visit: `https://your-project.vercel.app/api`
+Visit: `https://jntuxattendance.vercel.app/api`
 - Should return: `{"status":"ok","message":"JNTU Attendance API is running"}`
 
 ### Test API Endpoints
 
 ```bash
 # Test signup
-curl -X POST https://your-project.vercel.app/api/signup-with-otp \
+curl -X POST https://jntuxattendance.vercel.app/api/signup-with-otp \
   -H "Content-Type: application/json" \
   -d '{"email":"test@example.com","password":"test123","fullName":"Test User","rollNo":"123456","regulation":"R22"}'
 ```
@@ -109,9 +109,9 @@ Vercel routes requests based on the path:
 - `/*` → Frontend static files from `dist/`
 
 Examples:
-- `https://your-app.vercel.app/` → Frontend (index.html)
-- `https://your-app.vercel.app/api` → Backend health check
-- `https://your-app.vercel.app/api/signup-with-otp` → Backend signup endpoint
+- `https://jntuxattendance.vercel.app/` → Frontend (index.html)
+- `https://jntuxattendance.vercel.app/api` → Backend health check
+- `https://jntuxattendance.vercel.app/api/signup-with-otp` → Backend signup endpoint
 
 ## ⚠️ Important Notes
 
@@ -201,5 +201,5 @@ npm run web
 
 Your app is now live on Vercel with both frontend and backend!
 
-**Frontend:** `https://your-project.vercel.app`
-**Backend API:** `https://your-project.vercel.app/api`
+**Frontend:** `https://jntuxattendance.vercel.app`
+**Backend API:** `https://jntuxattendance.vercel.app/api`

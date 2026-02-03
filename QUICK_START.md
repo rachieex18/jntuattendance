@@ -39,7 +39,7 @@ SENDER_EMAIL=your-gmail@gmail.com
 SENDER_PASSWORD=your-gmail-app-password
 SUPABASE_URL=https://npxxtdymrjykixszxchd.supabase.co
 SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
-EXPO_PUBLIC_BACKEND_URL=https://your-project.vercel.app/api
+EXPO_PUBLIC_BACKEND_URL=https://jntuxattendance.vercel.app/api
 ```
 
 Select **All Environments** for each variable.
@@ -57,11 +57,11 @@ After deployment:
 ## ✅ Test Your Deployment
 
 ### Frontend
-Visit: `https://your-project.vercel.app`
+Visit: `https://jntuxattendance.vercel.app`
 - Should show your app ✅
 
 ### Backend API
-Visit: `https://your-project.vercel.app/api`
+Visit: `https://jntuxattendance.vercel.app/api`
 - Should return: `{"status":"ok","message":"JNTU Attendance API is running"}` ✅
 
 ## 🎉 Done!

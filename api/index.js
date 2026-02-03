@@ -31,7 +31,7 @@ const EMAIL_CONFIG = {
 // Supabase Init (Admin)
 const supabaseAdmin = createClient(
     process.env.SUPABASE_URL || 'https://npxxtdymrjykixszxchd.supabase.co',
-    process.env.SUPABASE_SERVICE_ROLE_KEY || ''
+    process.env.SUPABASE_SERVICE_ROLE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5weHh0ZHltcmp5a2l4c3p4Y2hkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk3MDcwMjcsImV4cCI6MjA4NTI4MzAyN30.R5dgdmXFZBqwWUun8wvXg06lU_Ezxv2oye00qhg9TTY'
 );
 
 // Create email transporter

@@ -32,7 +32,7 @@ Both the frontend (Expo web app) and backend (API) are configured to deploy toge
    SENDER_PASSWORD=your-gmail-app-password
    SUPABASE_URL=https://npxxtdymrjykixszxchd.supabase.co
    SUPABASE_SERVICE_ROLE_KEY=your-supabase-service-role-key
-   EXPO_PUBLIC_BACKEND_URL=https://your-project.vercel.app/api
+   EXPO_PUBLIC_BACKEND_URL=https://jntuxattendance.vercel.app/api
    ```
 
 4. **Deploy**
@@ -42,8 +42,8 @@ Both the frontend (Expo web app) and backend (API) are configured to deploy toge
 
 ### What Gets Deployed
 
-- **Frontend**: Static Expo web app at `https://your-project.vercel.app`
-- **Backend API**: Serverless functions at `https://your-project.vercel.app/api`
+- **Frontend**: Static Expo web app at `https://jntuxattendance.vercel.app`
+- **Backend API**: Serverless functions at `https://jntuxattendance.vercel.app/api`
 
 ### Post-Deployment
 
