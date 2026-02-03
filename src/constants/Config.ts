@@ -1,0 +1,12 @@
+export const CONFIG = {
+  SUPABASE_URL: 'https://npxxtdymrjykixszxchd.supabase.co',
+  SUPABASE_ANON_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5weHh0ZHltcmp5a2l4c3p4Y2hkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk3MDcwMjcsImV4cCI6MjA4NTI4MzAyN30.R5dgdmXFZBqwWUun8wvXg06lU_Ezxv2oye00qhg9TTY',
+  GEMINI_API_KEY: 'AIzaSyAAB0HSoRfT13xLQ9fpmJXyNgPbAPtCnxE',
+  JNTUH_RULES: {
+    SAFE_ZONE: 75,
+    CONDONATION_ZONE: 65,
+    THEORY_WEIGHT: 1,
+    LAB_WEIGHT: 3,
+    MIDTERM_BONUS: 2,
+  }
+};
